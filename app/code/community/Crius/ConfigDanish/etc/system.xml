@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <currency>
+            <groups>
+                <options>
+                    <fields>
+                        <use_shortname translate="label">
+                            <label>Use shortname (DKK) instead of symbol (kr)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_shortname>
+                    </fields>
+                </options>
+            </groups>
+        </currency>
+    </sections>
+</config>
