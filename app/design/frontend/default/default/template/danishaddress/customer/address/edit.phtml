@@ -81,10 +81,14 @@
                     <label for="city"><?php echo $this->__('City') ?> <span class="required">*</span></label><br />
                     <input type="text" name="city" value="<?php echo $this->htmlEscape($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" class="required-entry input-text" id="city" />
                 </div>
+			</li>
+			<li style="display: none"><div class="input-box">
+				<div>
 				<select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none">
                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                 </select>
 				<input type="hidden" id="region" name="region" value="<?php echo $this->htmlEscape($this->getAddress()->getRegion()) ?>"/>
+				</div>
             </li>
             <li>
                 <div class="input-box">
