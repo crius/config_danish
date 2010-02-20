@@ -26,7 +26,7 @@ $query = "DELETE FROM {$this->getTable('tax_calculation_rate')};";
 $installer->run($query);
 
 $query = <<< EOF
-INSERT INTO {$this->getTable('tax_calculation_rate')} VALUES (3, 'DK', 0, '*', '25 %', 25.0000);
+INSERT INTO {$this->getTable('tax_calculation_rate')} VALUES (3, 'DK', 0, '*', 'Dansk moms', 25.0000, NULL, NULL, NULL);
 EOF;
 $installer->run($query);
 
@@ -55,20 +55,29 @@ $installer->setConfigData('general/country/default', 'DK');
 $installer->setConfigData('general/locale/firstday', '1');
 $installer->setConfigData('general/locale/weekend', '0,6');
 $installer->setConfigData('tax/classes/shipping_tax_class', '3');
-$installer->setConfigData('tax/calculation/based_on', 'origin');
+$installer->setConfigData('tax/calculation/based_on', 'billing');
 $installer->setConfigData('tax/calculation/price_includes_tax', '1');
 $installer->setConfigData('tax/calculation/shipping_includes_tax', '0');
 $installer->setConfigData('tax/calculation/apply_after_discount', '1');
 $installer->setConfigData('tax/calculation/discount_tax', '0');
 $installer->setConfigData('tax/calculation/apply_tax_on', '0');
 $installer->setConfigData('tax/defaults/country', 'DK');
-$installer->setConfigData('tax/defaults/region', '');
-$installer->setConfigData('tax/defaults/postcode', '');
-$installer->setConfigData('tax/display/column_in_summary', '2');
-$installer->setConfigData('tax/display/full_summary', '1');
+$installer->setConfigData('tax/defaults/region', '*');
+$installer->setConfigData('tax/defaults/postcode', '*');
 $installer->setConfigData('tax/display/shipping', '2');
 $installer->setConfigData('tax/display/type', '2');
-$installer->setConfigData('tax/display/zero_tax', '1');
+$installer->setConfigData('tax/cart_display/price', '2');
+$installer->setConfigData('tax/cart_display/subtotal', '1');
+$installer->setConfigData('tax/cart_display/shipping', '1');
+$installer->setConfigData('tax/cart_display/grandtotal', '0');
+$installer->setConfigData('tax/cart_display/full_summary', '1');
+$installer->setConfigData('tax/cart_display/zero_tax', '1');
+$installer->setConfigData('tax/sales_display/price', '2');
+$installer->setConfigData('tax/sales_display/subtotal', '1');
+$installer->setConfigData('tax/sales_display/shipping', '1');
+$installer->setConfigData('tax/sales_display/grandtotal', '0');
+$installer->setConfigData('tax/sales_display/full_summary', '1');
+$installer->setConfigData('tax/sales_display/zero_tax', '1');
 $installer->setConfigData('tax/weee/enable', '0');
 $installer->setConfigData('tax/weee/display_list', '0');
 $installer->setConfigData('tax/weee/display', '0');
@@ -120,6 +129,7 @@ $installer->updateAttributeLabels('catalog_product', array(
 	'options_container' => 'Vis produktmuligheder i',
 	'page_layout' => 'Sidelayout',
 	'price' => 'Pris',
+	'price_view' => 'Prisvisning',
 	'short_description' => 'Kort beskrivelse',
 	'sku' => 'Varenummer',
 	'small_image' => 'Lille billede',
